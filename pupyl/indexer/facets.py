@@ -337,9 +337,14 @@ class Index:
 
                 _temp_file = tmp_idx.path
 
-            move(_temp_file, self.path)
+            tmp_idx.tree.unload()
+            self.tree.unload()
+            # Bad hack
+            sleep(3000)
+            os.replace(_temp_file, self.path)
 
             self.refresh()
+
 
     def remove(self, position):
         """Removes the tensor at ``position`` from the database.
