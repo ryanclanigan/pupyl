@@ -340,8 +340,6 @@ class Index:
 
             tmp_idx.tree.unload()
             self.tree.unload()
-            # Bad hack
-            time.sleep(3000)
             os.replace(_temp_file, self.path)
 
             self.refresh()
