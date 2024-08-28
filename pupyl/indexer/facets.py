@@ -1,6 +1,7 @@
 """Hyperspace indexing and operations."""
 
 import os
+import time
 from shutil import move, copy
 from warnings import warn as warning
 
@@ -340,7 +341,7 @@ class Index:
             tmp_idx.tree.unload()
             self.tree.unload()
             # Bad hack
-            sleep(3000)
+            time.sleep(3000)
             os.replace(_temp_file, self.path)
 
             self.refresh()
