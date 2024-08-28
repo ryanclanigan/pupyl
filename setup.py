@@ -2,8 +2,7 @@
 import setuptools
 
 
-with open('README.md') as readme:
-    long_description = readme.read()
+
 
 
 setuptools.setup(
@@ -14,7 +13,7 @@ setuptools.setup(
     description="🧿 Pupyl is a really fast image search "
     "library which you can index your own (millions of) images "
     "and find similar images in millisecond.",
-    long_description=long_description,
+    long_description='',
     long_description_content_type='text/markdown',
     url="https://github.com/policratus/pupyl",
     packages=setuptools.find_packages(),
