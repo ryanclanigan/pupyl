@@ -325,15 +325,7 @@ class ImageDatabase(ImageIO):
             )
 
             if not os.path.exists(mounted_file):
-                if self.is_animated_gif(uri):
-                    image = self.get_image(uri)
-                else:
-                    image = self.compress(
-                        self.size(
-                            uri, new_size=self._image_size, keep_aspect=True
-                        )
-                    )
-
+                image = self.get_image(uri)
                 self.save_image(mounted_file, image)
 
         self.save_image_metadata(index, uri)
