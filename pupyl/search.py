@@ -341,6 +341,7 @@ class PupylImageSearch:
                 with Index(
                     extractor.output_shape, data_dir=self._data_dir
                 ) as indexer:
+                    ranks = []
                     for rank, uri_from_file in extractor.progress(
                         enumerate(
                             extractor.scan_images(uri)
@@ -348,6 +349,8 @@ class PupylImageSearch:
                         precise=False,
                         message='Indexing images:'
                     ):
+                        rank = len(self.image_database)
+                        ranks.append(rank)
                         self.image_database.insert(rank, uri_from_file)
 
                         extractor.extract_save(
@@ -370,6 +373,7 @@ class PupylImageSearch:
                     self._index_configuration(
                         'w', feature_size=extractor.output_shape
                     )
+                    return ranks
 
     def search(
         self,
